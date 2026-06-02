@@ -6,7 +6,7 @@ checkmarx:
   scan:
     configs:
       sast:
-        incremental: 'true'
+        incremental: "true"
         incrementalChangeThreshold: "10"
         lightQueries: "false"
         baseBranch: "main"
