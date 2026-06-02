@@ -1,0 +1,12 @@
+version: 1
+
+# checkmarx-specific related configuration
+# every value in this section is optional 
+checkmarx: 
+  scan:
+    configs:
+      sast:
+        incremental: 'true'
+        incrementalChangeThreshold: "10"
+        lightQueries: "false"
+        baseBranch: "main"
