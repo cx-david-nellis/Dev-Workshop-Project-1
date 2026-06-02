@@ -6,6 +6,7 @@ checkmarx:
   scan:
     configs:
       sast:
+        presetName: 'All'
         incremental: 'true'
         incrementalChangeThreshold: "10"
         lightQueries: "false"
