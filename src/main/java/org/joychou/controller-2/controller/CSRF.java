@@ -27,3 +27,18 @@ public class CSRF {
         return "CSRF passed.";
     }
 }
+
+@RequestMapping("/csrf")
+public class CSRF2 {
+
+    @GetMapping("/")
+    public String index() {
+        return "form";
+    }
+
+    @PostMapping("/post")
+    @ResponseBody
+    public String post() {
+        return "CSRF passed.";
+    }
+}

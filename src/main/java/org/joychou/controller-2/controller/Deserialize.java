@@ -55,6 +55,27 @@ public class Deserialize {
         return "Are u ok?";
     }
 
+        @RequestMapping("/rememberMe/vuln")
+    public String rememberMeVul(HttpServletRequest request)
+            throws IOException, ClassNotFoundException {
+
+        Cookie cookie = getCookie(request, Constants.REMEMBER_ME_COOKIE);
+
+        if (null == cookie) {
+            return "No rememberMe cookie. Right?";
+        }
+
+        String rememberMe = cookie.getValue();
+        byte[] decoded = Base64.getDecoder().decode(rememberMe);
+
+        ByteArrayInputStream bytes = new ByteArrayInputStream(decoded);
+        ObjectInputStream in = new ObjectInputStream(bytes);
+        in.readObject();
+        in.close();
+
+        return "Are u ok annie?";
+    }
+
     /**
      * Check deserialize class using black list.
      * Or

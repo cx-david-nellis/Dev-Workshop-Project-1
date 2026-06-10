@@ -35,6 +35,15 @@ public class PathTraversal {
         return getImgBase64(filepath);
     }
 
+    @GetMapping("/path_traversal/sec")
+    public String getImageSec(String filepath) throws IOException {
+        if (SecurityUtil.pathFilter(filepath) == null) {
+            logger.info("Illegal file path: " + filepath);
+            return "Bad boy. Illegal file path. Not a smooth criminal";
+        }
+        return getImgBase64(filepath);
+    }
+
     private String getImgBase64(String imgFile) throws IOException {
 
         logger.info("Working directory: " + System.getProperty("user.dir"));
