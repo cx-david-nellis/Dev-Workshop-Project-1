@@ -23,8 +23,10 @@ public class CommandInject {
      */
     @GetMapping("/codeinject")
     public String codeInject(String filepath) throws IOException {
-
-        String[] cmdList = new String[]{"sh", "-c", "ls -la " + filepath};
+        // Fix: Use argv list form without a shell interpreter so that filepath is
+        // treated as a literal argument to "ls". Shell metacharacters (;, |, &, $, etc.)
+        // are never interpreted by a shell, eliminating the command injection vector.
+        String[] cmdList = new String[]{"ls", "-la", filepath};
         ProcessBuilder builder = new ProcessBuilder(cmdList);
         builder.redirectErrorStream(true);
         Process process = builder.start();
